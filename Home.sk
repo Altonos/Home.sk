@@ -1,0 +1,27 @@
+command /home <text> [<text>]:
+	trigger:
+
+		if arg-1 is "set":
+			set {home::%player%::%arg-2%} to player's location
+			add arg-2 to {home::%player%::list::*}
+			send "[&6Home&f]&6Dein home %arg-1% wurde auf %{home::%player%::%arg-2%}% gesetzt."
+			stop
+
+		if arg-1 is "list":
+
+			send "&6%{home::%player%::list::*}%"
+			send "[&6Home&f]&7Das sind deine homes"
+			stop
+
+		if arg-1 is "delete":
+			delete {home::%player%::%arg-2%}
+			remove arg-2 from {home::%player%::list::*}
+			send "[&6Home&f]&4Dein home %arg-2% wurde gelöscht"
+			stop
+
+
+		Teleport player to {home::%player%::%arg-1%}
+		send "[&6Home&f]&7 Du wurdest zu %arg-1% Teleportiert"
+
+
+		
